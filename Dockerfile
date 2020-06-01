@@ -9,7 +9,7 @@ RUN apk -v --update add \
         less \
         mailcap \
         && \
-    pip install --upgrade awscli==1.14.5 s3cmd==2.0.1 python-magic && \
+    pip install --upgrade awscli==1.18.55-r0 s3cmd==2.1.0-r0 python-magic && \
     apk -v --purge del py-pip && \
     rm /var/cache/apk/*
 
