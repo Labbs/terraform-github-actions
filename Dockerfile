@@ -2,6 +2,8 @@ FROM alpine:3.7
 
 ENV AWSCLI_VERSION "1.18.119"
 
+RUN ["/bin/sh", "-c", "apk add --update --no-cache bash ca-certificates curl git jq openssh"]
+
 RUN apk add --update \
     python \
     python-dev \
