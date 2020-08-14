@@ -1,6 +1,6 @@
 FROM alpine:3.7
 
-ENV AWSCLI_VERSION "1.18.55-r0"
+ENV AWSCLI_VERSION "1.18.119"
 
 RUN apk add --update \
     python \
