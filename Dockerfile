@@ -1,17 +1,15 @@
-FROM alpine:3 
+FROM alpine:3.7
 
-RUN ["/bin/sh", "-c", "apk add --update --no-cache bash ca-certificates curl git jq openssh"]
+ENV AWSCLI_VERSION "1.18.55-r0"
 
-RUN apk -v --update add \
-        python \
-        py-pip \
-        groff \
-        less \
-        mailcap \
-        && \
-    pip install --upgrade awscli==1.18.55-r0 s3cmd==2.1.0-r0 python-magic && \
-    apk -v --purge del py-pip && \
-    rm /var/cache/apk/*
+RUN apk add --update \
+    python \
+    python-dev \
+    py-pip \
+    build-base \
+    && pip install awscli==$AWSCLI_VERSION --upgrade --user \
+    && apk --purge -v del py-pip \
+    && rm -rf /var/cache/apk/*
 
 COPY ["src", "/src/"]
 
